@@ -18,10 +18,8 @@ class UserDatabase {
   ]
   
   // We need inside this class, the names of users be active and order by ID
-
-  var activeUserNames = [String]()
   
-  func storeActiveUserName() {
+  func storeActiveUserName() -> [String] {
     var activeUsers : [User] = []
     for user in users {
       if user.active == true {
@@ -32,18 +30,19 @@ class UserDatabase {
       user1.id < user2.id
     }
     
+    var activeUserNames = [String]()
     activeUserNames.removeAll()
     
     for user in activeUsers {
       activeUserNames.append(user.name)
     }
+    return activeUserNames
   }
     
 }
 
 let dataBase = UserDatabase()
-dataBase.storeActiveUserName()
-print(dataBase.activeUserNames)
+print(dataBase.storeActiveUserName())
 
 
 
