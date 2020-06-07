@@ -20,22 +20,14 @@ class UserDatabase {
   // We need inside this class, the names of users be active and order by ID
   
   func storeActiveUserName() -> [String] {
-    // we filter active user using filter
-    let activeUsers = users.filter { (user) -> Bool in
+    return users.filter { (user) -> Bool in
       return user.active
-    }
-    
-    // We order this using sorted
-    let orderUsers = activeUsers.sorted { (user1, user2) -> Bool in
+    }.sorted { (user1, user2) -> Bool in
       return user1.id < user2.id
-    }
-    
-    // Now get only name, for this we use map
-    let activeUserNames = orderUsers.map { user -> String in
+    }.map { user -> String in
       return user.name
     }
-    return activeUserNames
-  }    
+  }
 }
 
 let dataBase = UserDatabase()
